@@ -1,13 +1,298 @@
-body {
+
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,500;1,700&display=swap');
+
+*{
+
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+
+  font-family: 'Ubuntu';
+  color: hsl(213, 96%, 18%);
+}
+.container{
+
+  width: 80%;
+  margin: 150px auto;
+}
+.app{
+  font-family: 'Ubuntu';
+  width:  100%;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: start;
+  /* border: 1px solid #000; */
+  border-radius: 12px;
+  box-shadow: 0px 0px 5px 5px #ebe5e5;
+  padding: 0 20px;
+  height: 700px;
+}
+
+.sidebar{
+  max-height: 650px;
+  height: 100%;
+  background-image: url('./assets/images/bg-sidebar-desktop.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+
+.content-box{
+  width: 60%;
+  /* border: 1px solid blue; */
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+.tab{
+  display: flex;
+margin: 40px;
+cursor: pointer;
+background-color: transparent;
+border: none;
+outline: none;
+}
+
+.tabID{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bolder;
+  text-align: center;
+  padding: 13px 0;
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+
+.activeTabId {
+  background-color: hsl(206, 94%, 87%);
+  color: #000;
+
+}
+
+.tab-content{
+  padding: 0  20px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.tab-content p{
+  color: hsl(229, 24%, 87%);
+}
+.Main-Title-Component{
+
+  /* border: 1px solid green; */
+  margin: 0 0  30px 0;
+}
+.page-title{
+  color: hsl(213, 96%, 18%);
+  font-weight: bolder;
+  font-size: 34px;
+}
+
+.page-description{
+color: hsl(231, 11%, 63%);
+}
+
+.personalInfo{
+  display: flex;
+  flex-direction: column;
+  color: hsl(213, 96%, 18%);
+  font-size: 20px;
+  
+}
+
+.personalInfo input, 
+.personalInfo input :checked{
+  height: 50px;
+  margin: 3px 0 20px 0;
+  padding: 15px;
+  border-radius: 9px;
+  font-size: 17px;
+  font-weight: 500;
+  color: hsl(231, 11%, 63%);
+border: 0.5px solid  hsl(227, 18%, 90%);
+box-shadow: 0px 0px 1px 1px hsl(227, 18%, 90%);
+}
+
+.buttons{
+
+  display: flex;
+  justify-content: space-between;
+}
+.btn{
+  width: 120px;
+  height: 50px;
+  background-color: transparent;
+  color: hsl(231, 11%, 63%);
+  font-weight: bold;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  
+}
+
+.next-btn{
+  background-color: hsl(213, 96%, 18%);
+  position: absolute;
+  right: 10px;
+  color: #fff;
+  border: 1px solid hsl(213, 96%, 18%);
+  border-radius: 8px;
+}
+
+.Billings{
+  display: flex;
+ 
+  gap: 20px;
+ 
+
+}
+
+.billIcon{
+  margin: 0 0 70px 0;
+ width: 100px;
+ height: 100px;
+}
+.Item{
+  width: 40%;
+  text-align: left;
+  border: 1px solid hsl(231, 11%, 63%);
+  padding: 20px;
+  border-radius: 10px;
+  color: hsl(213, 96%, 18%);
+  cursor: pointer;
+}
+
+.bill-desc{
+  color: hsl(231, 11%, 63%);
+}
+
+.toggle-bill {
+  width: 60%;
+  text-align: center;
+  background-color: rgba(239, 241, 247, 0.9);
+  height: 60px;
+  padding: 25px 0;
+  margin: 50px auto;
+  border-radius: 8px;
+  color: hsl(231, 11%, 63%);
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+  margin: 0 9px;
+
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: -10px;
+  left: 0;
+  right: 0;
+  bottom: 9px;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(46px);
+  -ms-transform: translateX(46px);
+  transform: translateX(46px);
+}
+
+.AddsItem{
+  display: flex;
+  gap:20px;
+  margin: 40px 0;
+  border: 1px solid hsl(231, 11%, 63%);
+  padding: 20px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+
+.AddsItem input {
+  width: 20px;
+  height: 20px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.adds-amount{
+  position: absolute;
+  right: 60px;
+  margin-top: 15px;
+
+}
+
+.FinishingUp{
+  background-color: hsl(232, 37%, 88%);
+  padding: 20px;
+  margin: 40px 0;
+  border-radius: 12px;
+}
+
+.selected{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.Total{
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0 ;
+}
+
+.selected input{
+padding: 10px;
+border: none;
+  height: 50px;
 }
