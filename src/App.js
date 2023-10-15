@@ -2,9 +2,9 @@ import { useState } from "react";
 import arcade from "./assets/images/icon-arcade.svg";
 import advanced from "./assets/images/icon-advanced.svg";
 import pro from "./assets/images/icon-pro.svg";
-
+import thank from "./assets/images/icon-thank-you.svg"
 //===============================================
-let Allusers = [];
+const  Allusers = [];
 
 //===============================================
 
@@ -40,18 +40,32 @@ const Tabs = [
 //===============================================
 
 export default function App() {
+
+
   const [selectdTabID, setSelectedTabID] = useState(Tabs[0].id);
+  const [confirmationMade, setConfirmationMade] = useState(false);
   const [back, setBack] = useState(selectdTabID);
 
-  function handleGoBack(){
-    
-    setBack ( setSelectedTabID(selectdTabID - 1) );
+  function handleSelectedTabID() {
+    if (selectdTabID > 0 && selectdTabID < 4) setSelectedTabID(selectdTabID + 1);
   }
 
-  function handleSelectedTabID() {
-    if (selectdTabID > 0 && selectdTabID < 4)
-      setSelectedTabID(selectdTabID + 1);
+
+
+  function handleGoBack() {
+    setBack(setSelectedTabID(selectdTabID - 1));
   }
+
+  function handleConfirmation() {
+    setConfirmationMade(true);
+  }
+
+  function specialGoBack() {
+    setConfirmationMade(false);
+    setSelectedTabID(1);
+  }
+
+
 
   return (
     <div className="container">
@@ -61,7 +75,17 @@ export default function App() {
           selectdTabID={selectdTabID}
           GoNextTab={handleSelectedTabID}
         />
-        <ContentBox Tabs={Tabs} selectdTabID={selectdTabID} back={back} GoBack={handleGoBack} GoNextTab={handleSelectedTabID}/>
+        <ContentBox
+          Tabs={Tabs}
+          selectdTabID={selectdTabID}
+          back={back}
+          GoBack={handleGoBack}
+          GoFirst={specialGoBack}
+          GoNextTab={handleSelectedTabID}
+          onConfirm={handleConfirmation}
+          confirmationMade={confirmationMade} // Pass confirmation status as a prop
+        />
+
       </div>
     </div>
   );
@@ -70,23 +94,18 @@ export default function App() {
 
 //===============================================
 
-function SideBar({ Tabs, selectdTabID}) {
+function SideBar({ Tabs, selectdTabID }) {
   return (
     <ul className="sidebar">
       {Tabs.map((tab) => (
-        <Tab
-          Tab={tab}
-          key={tab.id}
-          selectdTabID={selectdTabID}
-          
-        />
+        <Tab Tab={tab} key={tab.id} selectdTabID={selectdTabID} />
       ))}
     </ul>
   );
 }
 //===============================================
 
-function Tab({ Tab, selectdTabID}) {
+function Tab({ Tab, selectdTabID }) {
   return (
     <div className="tab">
       <div className={`tabID ${selectdTabID === Tab.id ? "activeTabId" : ""}`}>
@@ -101,23 +120,131 @@ function Tab({ Tab, selectdTabID}) {
 }
 //===============================================
 
-function ContentBox({ Tabs, selectdTabID , GoBack, GoNextTab}) {
+function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFirst, onConfirm, confirmationMade }) {
+ 
+
+  const [userInfo, setUserInfo] = useState({
+    UserData: {
+      Name: "",
+      Email: "",
+      PhoneNumber: "",
+    },
+    UserPlan: {
+      Planname: "",
+      icon: "",
+      Planamount: "",
+      Plantype: "",
+      PlanID: "",
+    },
+    UserAddsInfo: [],
+  });
+
+  // Define functions to update the userInfo object
+  const updateName = (name) => {
+    setUserInfo({ ...userInfo, UserData: { ...userInfo.UserData, Name: name } });
+  };
+
+  const updateEmail = (email) => {
+    setUserInfo({ ...userInfo, UserData: { ...userInfo.UserData, Email: email } });
+  };
+
+  const updatePhoneNumber = (phoneNumber) => {
+    setUserInfo({
+      ...userInfo,
+      UserData: { ...userInfo.UserData, PhoneNumber: phoneNumber },
+    });
+  };
+
+  const updatePlanInfo = (planName, planIcon, planAmount, planType) => {
+    setUserInfo({
+      ...userInfo,
+      UserPlan: {
+        Planname: planName,
+        icon: planIcon,
+        Planamount: planAmount,
+        Plantype: planType,
+      },
+    });
+  };
+if (confirmationMade) {
+  Allusers.push(userInfo);
+  console.log(userInfo)
+  console.log(Allusers)
+
+    return (
+      <ThankFullComponent />
+      
+    );
+  } 
+
+  else 
+ {
   return (
     <div className="content-box">
       <PageTitle Tabs={Tabs} selectdTabID={selectdTabID} />
 
-      {selectdTabID === 1 && <PersonalInfo selectdTabID={selectdTabID}  GoNextTab={GoNextTab}/>}
+      {selectdTabID === 1 && (
+        <PersonalInfo
+          selectdTabID={selectdTabID}
+          GoNextTab={GoNextTab}
+          userInfo={userInfo}
+          onSetName={(e) => updateName(e.target.value)}
+          onSetEmail={(e) => updateEmail(e.target.value)}
+          onSetPhone={(e) => updatePhoneNumber(+e.target.value)}
+        />
+      )}
 
-      {selectdTabID === 2 && <SelectYourPlan GoBack={GoBack} GoNextTab={GoNextTab} />}
+      {selectdTabID === 2 && (
+       <SelectYourPlan
+       GoBack={GoBack}
+       GoNextTab={GoNextTab}
+       userInfo={userInfo}
+       updatePlanInfo={updatePlanInfo}
+     />
+      )}
 
-      {selectdTabID === 3 && <PickAddsOn GoBack={GoBack} GoNextTab={GoNextTab} />}
+      {selectdTabID === 3 && (
+        <PickAddsOn 
+        GoBack={GoBack}
+        GoNextTab={GoNextTab}
+        userInfo={userInfo}
+        onSetAddsID={() => {}}
+        onSetAddsTitle={() => {}}
+        onSetAddsDescription={() => {}}
+        onSetAddsAmount={() => {}}
 
-      {selectdTabID === 4 && <FinishingUp GoBack={GoBack} GoNextTab={GoNextTab}/>}
+        />
+      )}
 
+     {
+      selectdTabID === 4 && (
+        <FinishingUp
+        GoBack={GoFirst}
+        userInfo={userInfo}
+        selectdTabID={selectdTabID}
+      />
+
+      )
+     }
       
+      <div className="buttons">
+        <button className="btn" onClick={GoBack}>
+          Go Back
+        </button>
+        <button
+          className="btn next-btn"
+          onClick={
+            selectdTabID === 4 ? onConfirm : GoNextTab
+          }
+        >
+          {selectdTabID === 4 ? "Confirm" : "Next Step"}
+        </button>
+      </div>
 
     </div>
   );
+
+ }
 }
 //===============================================
 function PageTitle({ Tabs, selectdTabID }) {
@@ -132,138 +259,124 @@ function PageTitle({ Tabs, selectdTabID }) {
 
 //===============================================
 
-function PersonalInfo({ GoNextTab}) {
-const [name, setName] =useState("");
-const [email, setEmail] =useState("");
-const [phoneNumber, setPhoneNumber] =useState("");
+function PersonalInfo({
+  GoNextTab,
+  userInfo,
+  onSetName,
+  onSetEmail,
+  onSetPhone,
+}) 
 
+{
+  function handleOnSumbit(e) {
+    e.preventDefault();
+    console.log(userInfo);
 
-
-
-
-function handleOnSumbit(e){
-
-  e.preventDefault();
-
- const  newUser = {name, email, phoneNumber};
- Allusers.push(newUser);
-
- console.log(newUser)
- console.log(Allusers);
-
- GoNextTab();
-}
-
-
+    GoNextTab();
+  }
 
   return (
-    <form className="personalInfo" onSubmit={handleOnSumbit} >
+    <form className="personalInfo" onSubmit={handleOnSumbit}>
       <label>Name</label>
-      <input type="text" placeholder="e.g. Stephen king" value={name} onChange={(e)=>setName(e.target.value)} />
+      <input type="text" placeholder="e.g. Stephen king" onChange={onSetName}  required/>
 
       <label>Email</label>
-      <input type="email" placeholder="e.g. Stephenking@lorem.com" value={email} onChange={(e)=>setEmail(e.target.value)} />
+      <input
+        type="email"
+        placeholder="e.g. Stephenking@lorem.com"
+        onChange={onSetEmail}
+        required
+      />
 
       <label>Phone Number</label>
-      <input type="text" placeholder="e.g. + 1234567890" value={phoneNumber} onChange={(e)=>setPhoneNumber(+e.target.value)} />
+      <input
+        type="text"
+        placeholder="e.g. + 1234567890"
+        onChange={onSetPhone}
+        required
+      />
 
-      <div className="buttons">
-
-<button className="btn next-btn" type="submit">Next Step</button>
-
-</div>
-      
+     
     </form>
   );
 }
 
 //===============================================
-function SelectYourPlan({GoBack, GoNextTab}) {
+function SelectYourPlan({ GoBack, GoNextTab, userInfo ,  updatePlanInfo})
+
+{
   const Billings = [
     {
-      name: "Arcade",
+      Planname: "Arcade",
       icon: arcade,
-      amount: 9,
-      type: "mo",
+      Planamount: 9,
+      Plantype: "mo",
     },
     {
-      name: "Advanced",
+      Planname: "Advanced",
       icon: advanced,
-      amount: 15,
-      type: "mo",
+      Planamount: 15,
+      Plantype: "mo",
     },
     {
-      name: "Pro",
+      Planname: "Pro",
       icon: pro,
-      amount: 15,
-      type: "mo",
+      Planamount: 15,
+      Plantype: "mo",
     },
   ];
   return (
     <div className="SelectYourPlan">
       <div className="Billings">
         {Billings.map((item) => (
-          <BillItem billItem={item} key={item.name} />
+          <BillItem billItem={item} key={item.name} userInfo={userInfo} updatePlanInfo={updatePlanInfo} />
         ))}
       </div>
 
       <div className="toggle-bill">
         <span>Monthly</span>
         <label class="switch">
-          <input 
-          type="checkbox" 
-          
-          />
+          <input type="checkbox" />
           <span class="slider round"></span>
         </label>
 
         <span>Yearly</span>
       </div>
 
-      <div className="buttons">
-      <button className="btn" onClick={GoBack}>Go Back</button>
-
-<button className="btn next-btn" onClick={GoNextTab}>Next Step</button>
-
-</div>
-
+      
     </div>
   );
 }
 
 //===============================================
-function BillItem({ billItem }) {
-
+function BillItem({ billItem, userInfo , updatePlanInfo }) 
+  
+  {
   const [currPlan, setCurrPlan] = useState("");
 
-  function handleSelection(){
+  
+  function handleSelection() {
     setCurrPlan(billItem.name);
-    console.log(billItem.name)
 
+    
+    // Update the state using the provided functions
+    updatePlanInfo(billItem.Planname, billItem.icon ,billItem.Planamount, billItem.Plantype);
+       console.log(userInfo);
   }
 
+
+
   return (
-    <label className="Item" onClick={handleSelection}>
+      <label className="Item" onClick={handleSelection}>
+      <input id={currPlan} name="plan" type="radio" />
 
-<input
-            id={currPlan}
-            name="plan"
-            type="radio"
-         
-            
-          />
 
-      <img src={billItem.icon} alt={billItem.name} className="billIcon" />
-      <h3>{billItem.name}</h3>
+      <img src={billItem.icon} alt={billItem.Planname} className="billIcon" />
+      <h3>{billItem.Planname}</h3>
       <label className="bill-desc">
+        <span>${billItem.Planamount}/</span>
 
-
-        <span>${billItem.amount}/</span>
-        
-        
-         <span>{billItem.type}</span>
-
-
+        <span>{billItem.Plantype}</span>
       </label>
       <p>2 months free</p>
     </label>
@@ -272,126 +385,185 @@ function BillItem({ billItem }) {
 
 //===============================================
 
-function PickAddsOn({GoBack, GoNextTab}) {
+function PickAddsOn({
+  GoBack,
+  GoNextTab,
+  userInfo,
+  onSetAddsID,
+  onSetAddsTitle,
+  onSetAddsDescription,
+  onSetAddsAmount,
+}) {
   const PickAdds = [
     {
-      id: 1,
-      title: "Online Service",
-      description: "Access to multiplyer games",
-      amount: 1,
-      type: "mo",
+      AddsId: 0,
+      AddsTitle: "Online Service",
+      AddsDescription: "Access to multiplayer games",
+      AddsAmount: 1,
+      AddsType: "mo",
     },
     {
-      id: 2,
-      title: "Large Storage",
-      description: "Extra 1TB on cloud save",
-      amount: 2,
-      type: "mo",
+      AddsId: 1,
+      AddsTitle: "Large Storage",
+      AddsDescription: "Extra 1TB on cloud save",
+      AddsAmount: 2,
+      AddsType: "mo",
     },
     {
-      id: 3,
-      title: "Customizable profile",
-      description: "Custom them on your profile",
-      amount: 1,
-      type: "mo",
+      AddsId: 2,
+      AddsTitle: "Customizable profile",
+      AddsDescription: "Custom theme on your profile",
+      AddsAmount: 1,
+      AddsType: "mo",
     },
-  ];
+   ];
+
+   const handleSelection = (item) => {
+    const existingAddOnIndex = userInfo.UserAddsInfo.findIndex(
+      (add) => add.AddsId === item.AddsId
+    );
+
+    if (existingAddOnIndex === -1) {
+      // If it doesn't exist, add the new Add-On to the array
+      userInfo.UserAddsInfo.push(item);
+    } else {
+      // If it exists, remove it from the array
+      userInfo.UserAddsInfo.splice(existingAddOnIndex, 1);
+    }
+
+    // Call the provided functions to update the corresponding state
+    onSetAddsID(item.AddsId);
+    onSetAddsTitle(item.AddsTitle);
+    onSetAddsDescription(item.AddsDescription);
+    onSetAddsAmount(item.AddsAmount);
+  };
+  
+
 
   return (
     <div className="PickAddsOn">
       {PickAdds.map((addsItem) => (
-        <AddsItem Item={addsItem} key={addsItem.id} />
+        <AddsItem
+          key={addsItem.AddsId}
+          item={addsItem}
+          userInfo={userInfo}
+          handleSelection={handleSelection}
+        />
+        
       ))}
 
-<div className="buttons">
-      <button className="btn" onClick={GoBack}>Go Back</button>
-
-      <button className="btn next-btn" onClick={GoNextTab}>Next Step</button>
-
-</div>
+     
     </div>
   );
 }
 
 //===============================================
-function AddsItem({ Item }) {
+function AddsItem({ item, userInfo, handleSelection }) {
+  const isAddOnSelected = userInfo.UserAddsInfo.some(
+    (add) => add.AddsId === item.AddsId
+  );
+
+  const handleCheckboxClick = () => {
+    handleSelection(item);
+    console.log(userInfo);
+  };
+
   return (
-    <div className="AddsItem">
-      <input type="checkbox" />
+    <label className="AddsItem">
+      <input
+        type="checkbox"
+        defaultChecked={isAddOnSelected} // Use defaultChecked
+        onClick={handleCheckboxClick}
+      />
 
       <div>
-        <h1>{Item.title}</h1>
-        <p>{Item.description}</p>
+        <h1>{item.AddsTitle}</h1>
+        <p>{item.AddsDescription}</p>
       </div>
 
       <p className="adds-amount">
-        {" "}
         +$
         <span>
-          {Item.amount}/{Item.type}
+          {item.AddsAmount}/{item.AddsType}
         </span>
       </p>
-    </div>
+    </label>
   );
 }
+
+
+
+
 //===============================================
 
-function FinishingUp({GoBack, GoNextTab}) {
+function FinishingUp({  userInfo }) {
+
+  
+
   return (
-   <>
-   
-   <div className="FinishingUp">
-      <div className="userInfo">
-        <h2>Arcade(Monthely)</h2>
+    <>
+      <div className="FinishingUp">
+        <div className="userInfo">
+          <h2>
+            {userInfo.UserPlan.Planname}{' '}
+            {userInfo.UserPlan.Plantype === 'mo' ? '(Monthly)' : '(Yearly)'}
+          </h2>
+          <h2>
+            +${userInfo.UserPlan.Planamount}/
+            {userInfo.UserPlan.Plantype === 'mo' ? 'mo' : 'yr'}
+          </h2>
+        </div>
         <div className="selected">
           <button>Change</button>
-          amount
         </div>
+        <FinishItem userInfo={userInfo}/>
       </div>
 
-     <FinishItem />
-     <FinishItem />
+      <TotalItem userInfo={userInfo}/>
 
-<TotalItem />
-     
+    </>
+  );
+}
 
 
-
+//===============================================
+function FinishItem({userInfo}) {
+  return (
+    <div>
+      {userInfo.UserAddsInfo.map((item, index) => (
+        <div className="selected" key={index}>
+          <p>{item.AddsTitle}</p>
+          <p>+${item.AddsAmount}/{item.AddsType}</p>
+        </div>
+      ))}
     </div>
-
-<div className="buttons">
-<button className="btn" onClick={GoBack}>Go Back</button>
-
-<button className="btn next-btn" onClick={GoNextTab}>Next Step</button>
-
-</div>
-
-   </>
   );
 }
 
 //===============================================
-function FinishItem(){
+function TotalItem({userInfo}) {
 
-return(
-    <div className="selected">
-    <p>Large Storage</p>
-    amount
-  </div>
+  const totalAmount = userInfo.UserAddsInfo.reduce((total, item) => total + parseFloat(item.AddsAmount), 0);
 
-
+  return (
+    <div className="selected Total">
+     <p> Total per {userInfo.UserPlan.Plantype === "mo" ? "month" : "year"} </p>
+     <h2> {`$${totalAmount + userInfo.UserPlan.Planamount}/${userInfo.UserPlan.Plantype}`}</h2>
+    </div>
   );
 }
 
-//===============================================
-function TotalItem(){
+//============================================
 
-  return(
-    <div className="selected">
-
-    <input type="text" disabled placeholder="Total (per month)"/>
-    <p>+$1/mo</p>
-    </div>
+function ThankFullComponent() {
   
-    );
-  }
+
+  return (
+    <div className="content-box Thanks">
+    <img src={thank} alt="thankImage" />
+    <h1>Thank You</h1>
+    <p>Thanks for confirming your subscription! We hope you have fun 
+      using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.</p>
+    </div>
+  );
+}

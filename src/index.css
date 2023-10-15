@@ -273,26 +273,48 @@ input:checked + .slider:before {
 }
 
 .FinishingUp{
-  background-color: hsl(232, 37%, 88%);
+  background-color: hsl(205, 100%, 98%);
   padding: 20px;
   margin: 40px 0;
   border-radius: 12px;
 }
+.userInfo{
+  display: flex;
+  justify-content: space-between;
+  font-weight: bolder;
 
+}
 .selected{
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
+  border-radius: 9px;
+  font-weight: bolder;
+
+
 }
 
-.Total{
-  display: flex;
-  justify-content: space-between;
-  margin: 40px 0 ;
-}
 
-.selected input{
+.selected h2{
+  margin: 12px 15px 42px 0 ;
+}
+.selected p{
 padding: 10px;
-border: none;
+border: 1px solid transparent;
   height: 50px;
+  color: hsl(231, 11%, 63%);
+  font-weight: normal;
+}
+
+.Thanks{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+gap: 20px;
+  justify-content: center;
+padding: 60px;
+}
+
+.Thanks p{
+  color: hsl(231, 11%, 63%);
 }
