@@ -167,6 +167,7 @@ console.log("Saving To Local Storage Successed")
          GoNextTab={GoNextTab}
          userInfo={userInfo}
          updatePlanInfo={updatePlanInfo}
+         setUserInfo={setUserInfo}
        />
         )}
   

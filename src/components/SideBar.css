@@ -6,3 +6,28 @@
     background-size: contain;
   }
   
+
+  @media only screen and (max-width: 750px) {
+.sidebar{
+ height: 500px;
+}
+  }
+  @media only screen and (max-width: 636px) {
+    .sidebar{
+     height: 380px;
+    }
+      }
+      
+
+      @media only screen and (max-width: 600px) {
+        .sidebar{
+          background-image: url('../assets/images/bg-sidebar-mobile.svg');
+          background-repeat: no-repeat;
+    background-size: contain;
+    width: 480px;
+    border-radius: 12px;
+    /* margin: 20px 0; */
+        }
+     
+           }
+           

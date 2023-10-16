@@ -19,3 +19,29 @@
   box-shadow: 0px 0px 1px 1px hsl(227, 18%, 90%);
   }
   
+
+  @media only screen and (max-width: 750px) {
+    .personalInfo{
+    
+      font-size: 15px;
+      
+    }
+      }
+
+      @media only screen and (max-width: 636px) {
+        .personalInfo input{
+height: 20px;
+width: 220px;
+
+        }
+          }
+
+
+
+  @media only screen and (max-width: 600px) {
+    .personalInfo input{
+      width: 100%;
+      
+              }
+
+            }

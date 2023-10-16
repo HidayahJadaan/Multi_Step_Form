@@ -32,5 +32,41 @@ body{
   height: 650px;
 }
 
+@media only screen and (max-width: 750px) {
+  /* body {
+    background-color:  hsl(208, 60%, 95%);
+  } */
+  .app{
+    max-height: 600px;
+    height: 560px;
+  }
+  
+}
 
+@media only screen and (max-width: 690px) {
+  app{
+    max-height: 400px;
+    height: 400px;
+  }
+  
 
+  }
+
+  @media only screen and (max-width: 636px) {
+   .app{
+    height: 420px;
+   }
+
+      }
+      
+
+      @media only screen and (max-width: 600px) {
+        .app{
+         flex-direction: column;
+         padding: 0;
+         height: 520px;
+         background-color:  hsl(207, 53%, 93%);
+        }
+     
+           }
+           

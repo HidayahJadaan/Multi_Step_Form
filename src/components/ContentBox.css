@@ -38,3 +38,73 @@
     border-radius: 10px;
     color: #fff;
   }
+
+/* 
+  @media only screen and (mmax-width: 758px) {
+    .content-box{
+      width: 45%;
+      position: absolute;
+      right: 0;
+    
+    }
+
+
+    .btn{
+      width: 100px;
+      height: 40px;
+      
+      font-size: 17px;
+      
+    }
+      }
+       */
+
+
+
+@media only screen and (max-width: 690px) {
+  .content-box{
+    padding: 10px;
+
+    position: relative;
+  }
+.next-btn, .btn{
+  position: absolute;
+  bottom: -10%;
+}
+
+  }
+
+
+
+  @media only screen and (max-width: 636px) {
+   
+  .btn{
+    width: 120px;
+    height: 30px;
+  /* border-radius: 50%;   */
+  font-size: 15px;
+  position: absolute;
+  bottom: -3%;
+  margin: 0 -20px;
+  }
+ 
+       }
+       
+
+
+  @media only screen and (max-width: 600px) {
+   
+   .content-box{
+    position: absolute;
+    top: 20%;
+    background-color: #fff;
+padding: 20px;
+border-radius: 12px;
+   }
+
+   .btn{
+    width: 123px;
+    margin: -35px 0;
+   }
+         }
+         

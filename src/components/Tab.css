@@ -36,3 +36,57 @@
   .tab-content p{
     color: hsl(229, 24%, 87%);
   }
+
+
+
+  @media only screen and (max-width: 750px) {
+
+    .tab{
+      
+    margin: 23px;
+  }
+    .tab-content{
+      padding: 0 10px  ;
+      font-size: 15px;
+    }
+
+
+    }
+    @media only screen and (max-width: 690px) {
+
+      .tab{
+        
+      margin: 17px;
+    }
+      .tab-content{
+        padding: 0 10px  ;
+        font-size: 15px;
+      }
+  
+  
+      }
+      
+
+      @media only screen and (max-width: 636px) {
+        .tab{
+          margin: 10px;
+        }
+
+        .tab-content{
+          padding: 0 10px  ;
+          font-size: 12px;
+        }
+    
+          }
+          
+
+          @media only screen and (max-width: 600px) {
+            .tab{
+              transform: rotateX(200deg);
+            }
+            .tab-content{
+              opacity: 0;
+            }
+        
+              }
+              
