@@ -7,6 +7,7 @@ import FinishingUp from "../components/FinishingUp"
 import ThankFullComponent from "../components/Thank"
 import Admin from "../components/Admin"
 import AdminLoginPage from "../components/AdminLogin"
+import "./ContentBox.css"
 
 export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFirst, onConfirm, confirmationMade, Allusers,specialGoAdmin,showAdmin,adminLoggedIn,
   GoToAdminPage,handleAdminLogin }) {

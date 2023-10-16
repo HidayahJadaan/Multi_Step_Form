@@ -1,4 +1,5 @@
 import thank from "../assets/images/icon-thank-you.svg"
+import "./Thank.css"
 
 export default function ThankFullComponent({  GoBack, selectdTabID, specialGoAdmin }) {
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import PageTitle from './PageTitle';
+import "./Admin.css"
 export default function Admin({ Tabs, selectdTabID, Allusers }) {
   const storedAllusers = JSON.parse(localStorage.getItem('allusers')) || [];
 

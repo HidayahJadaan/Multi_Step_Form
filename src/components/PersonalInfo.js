@@ -1,3 +1,5 @@
+import "./PersonalInfo.css"
+
 export default function PersonalInfo({
   GoNextTab,
   userInfo,

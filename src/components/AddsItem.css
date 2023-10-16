@@ -1,0 +1,24 @@
+
+.AddsItem{
+    display: flex;
+    gap:20px;
+    margin: 40px 0;
+    border: 1px solid hsl(231, 11%, 63%);
+    padding: 20px;
+    border-radius: 9px;
+    cursor: pointer;
+  }
+  
+  
+  .AddsItem input {
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+  .adds-amount{
+    position: absolute;
+    right: 60px;
+    margin-top: 15px;
+  
+  }

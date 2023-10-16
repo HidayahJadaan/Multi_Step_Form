@@ -1,5 +1,7 @@
 import FinishItem from "../components/FinishItem"
 import TotalItem from "../components/TotalItem"
+import "./FinishingUp.css"
+
 
 export default function FinishingUp({  userInfo }) {
 

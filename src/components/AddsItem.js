@@ -1,3 +1,5 @@
+import "./AddsItem.css"
+
 export default function AddsItem({ item, userInfo, handleSelection }) {
     const isAddOnSelected = userInfo.UserAddsInfo.some(
       (add) => add.AddsId === item.AddsId

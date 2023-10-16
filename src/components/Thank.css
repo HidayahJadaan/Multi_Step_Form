@@ -1,0 +1,13 @@
+
+.Thanks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  gap: 20px;
+    justify-content: center;
+  padding: 60px;
+  }
+  
+  .Thanks p{
+    color: hsl(231, 11%, 63%);
+  }

@@ -3,6 +3,7 @@ import advanced from "../assets/images/icon-advanced.svg";
 import pro from "../assets/images/icon-pro.svg";
 import BillItem from "../components/BillItem";
 import { useState } from "react";
+import "./SelectPlan.css"
 
 export default function SelectYourPlan({ userInfo, updatePlanInfo }) {
   const [planType, setPlanType] = useState('mo'); // Initialize planType state to 'mo'

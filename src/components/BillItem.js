@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./BillItem.css"
 
 export default function BillItem({ billItem, userInfo , updatePlanInfo }) 
   

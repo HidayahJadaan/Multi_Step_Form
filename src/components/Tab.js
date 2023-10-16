@@ -1,3 +1,5 @@
+import "./Tab.css"
+
 export default function Tab({ Tab, selectdTabID }) {
   return (
     <div className="tab">

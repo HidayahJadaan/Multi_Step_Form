@@ -1,3 +1,5 @@
+import "./PageTitle.css"
+
 export default function PageTitle({ Tabs, selectdTabID }) {
     const selectedObject = Tabs.find((tab) => tab.id === selectdTabID);
     return (
