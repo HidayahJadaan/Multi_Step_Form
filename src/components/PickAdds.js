@@ -1,8 +1,7 @@
 import AddsItem from "../components/AddsItem"
 
 export default function PickAddsOn({
-  GoBack,
-  GoNextTab,
+
   userInfo,
   onSetAddsID,
   onSetAddsTitle,

@@ -11,7 +11,10 @@ import AdminLoginPage from "../components/AdminLogin"
 export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFirst, onConfirm, confirmationMade, Allusers,specialGoAdmin,showAdmin,adminLoggedIn,
   GoToAdminPage,handleAdminLogin }) {
   
-
+    function saveAllUsersToLocalStorage(Allusers) {
+      localStorage.setItem('allusers', JSON.stringify(Allusers));
+    }
+    
  
   function onCancel() {
     // Reset the form state to its initial values
@@ -100,6 +103,8 @@ export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFi
   
         if (!userExists) {
           Allusers.push(userInfo);
+          saveAllUsersToLocalStorage(Allusers);
+console.log("Saving To Local Storage Successed")
           setUserInfo({
             UserData: {
               Name: "",
@@ -128,7 +133,7 @@ export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFi
       ) : adminLoggedIn ? (
         <Admin Tabs={Tabs} selectdTabID={selectdTabID} Allusers={Allusers} />
       ) : (
-        <ThankFullComponent GoNextTab={GoNextTab} GoBack={onCancel} selectdTabID={selectdTabID} GoToAdminPage={GoToAdminPage} />
+        <ThankFullComponent GoNextTab={GoNextTab} GoBack={onCancel} selectdTabID={selectdTabID}  specialGoAdmin={specialGoAdmin} />
       )
     );
     } 

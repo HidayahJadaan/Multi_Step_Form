@@ -1,7 +1,6 @@
 import { useState } from "react";
 import SideBar from "./components/SideBar"
 import ContentBox from "./components/ContentBox"
-import AdminLoginPage from "./components/AdminLogin";
 
 //===============================================
 const  Allusers = [];
@@ -59,7 +58,7 @@ export default function App() {
   
   const GoToAdminPage = () => {
     handleSelectedTabID();
-    if (selectdTabID === 4) {
+    if (selectdTabID === 5) {
       setShowAdmin(true);
       
     }
@@ -105,6 +104,8 @@ export default function App() {
 
   function handleConfirmation() {
     setConfirmationMade(true);
+    setSelectedTabID(5); 
+
     
   }
 

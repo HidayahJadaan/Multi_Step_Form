@@ -17,7 +17,7 @@ export default function PersonalInfo({
 
 
   return (
-   <>
+   
    
    <form className="personalInfo" onSubmit={handleOnSumbit}>
       <label>Name</label>
@@ -39,14 +39,11 @@ export default function PersonalInfo({
         required
       />
 
+<div className="buttons">
+  <button className="btn" onClick={specialGoAdmin}>Go To Admin Page</button>
 
+</div>
     </form>
 
-<div className="buttons">
-
-  <button className="btn" onClick={specialGoAdmin}>Go To Admin Page</button>
-</div>
-
-   </>
   );
 }

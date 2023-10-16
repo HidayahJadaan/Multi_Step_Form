@@ -1,6 +1,6 @@
 import thank from "../assets/images/icon-thank-you.svg"
 
-export default function ThankFullComponent({  GoBack, selectdTabID, GoToAdminPage }) {
+export default function ThankFullComponent({  GoBack, selectdTabID, specialGoAdmin }) {
   return (
     <>
       <div className="content-box ">
@@ -20,8 +20,8 @@ export default function ThankFullComponent({  GoBack, selectdTabID, GoToAdminPag
         <button className="btn" onClick={GoBack}>
           Cancel
         </button>
-        <button className="btn Admin-btn" onClick={GoToAdminPage}>
-          {selectdTabID === 4 ? 'Go To Admin Page' : 'Next Step'}
+        <button className="btn Admin-btn" onClick={specialGoAdmin}>
+          {selectdTabID === 5 ? 'Go To Admin Page' : 'Next Step'}
         </button>
       </div>
 
