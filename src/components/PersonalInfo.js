@@ -4,6 +4,7 @@ export default function PersonalInfo({
   onSetName,
   onSetEmail,
   onSetPhone,
+  specialGoAdmin
 }) 
 
 {
@@ -14,8 +15,11 @@ export default function PersonalInfo({
     GoNextTab();
   }
 
+
   return (
-    <form className="personalInfo" onSubmit={handleOnSumbit}>
+   <>
+   
+   <form className="personalInfo" onSubmit={handleOnSumbit}>
       <label>Name</label>
       <input type="text" placeholder="e.g. Stephen king" onChange={onSetName}  required/>
 
@@ -35,7 +39,14 @@ export default function PersonalInfo({
         required
       />
 
-     
+
     </form>
+
+<div className="buttons">
+
+  <button className="btn" onClick={specialGoAdmin}>Go To Admin Page</button>
+</div>
+
+   </>
   );
 }

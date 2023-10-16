@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SideBar from "./components/SideBar"
 import ContentBox from "./components/ContentBox"
+import AdminLoginPage from "./components/AdminLogin";
 
 //===============================================
 const  Allusers = [];
@@ -34,19 +35,66 @@ const Tabs = [
     PageTitle: "Finishing up",
     description: "Double-check everything looks OK before confirming.",
   },
+
+  {
+    id: 5,
+    title: "Admin Login Page",
+    PageTitle: "Admin Login Page",
+    description: "Login If You're Admin.",
+  },
+  {
+    id: 6,
+    title: "Admin",
+    PageTitle: "Admin Dashboard",
+    description: "All The Users that filled the form",
+  },
 ];
 
 //===============================================
 
 export default function App() {
 
+  const [showAdmin, setShowAdmin] = useState(false);
+  const [adminLoggedIn, setAdminLoggedIn] = useState(false);
+  
+  const GoToAdminPage = () => {
+    handleSelectedTabID();
+    if (selectdTabID === 4) {
+      setShowAdmin(true);
+      
+    }
+    
+  };
 
-  const [selectdTabID, setSelectedTabID] = useState(Tabs[0].id);
+  const handleAdminLogin = (email, name, password) => {
+    // Define the admin's credentials
+    const adminEmail = "admin@admin.com";
+    const adminName = "admin";
+    const adminPassword = "admin";
+  
+    // Check if the entered credentials match the admin's credentials
+    if (email === adminEmail && name === adminName && password === adminPassword) {
+      // Successful login, update the state variable
+      setSelectedTabID(6)
+      console.log(selectdTabID)
+      setAdminLoggedIn(true);
+      console.log(name)
+      console.log(email)
+      console.log(password)
+      console.log("Success Login")
+    } else {
+      // Display an error message if the credentials don't match
+      alert("Only admins can log in to this page.");
+    }
+  };
+
+
+  const [selectdTabID, setSelectedTabID] = useState(1);
   const [confirmationMade, setConfirmationMade] = useState(false);
   const [back, setBack] = useState(selectdTabID);
 
   function handleSelectedTabID() {
-    if (selectdTabID > 0 && selectdTabID < 4) setSelectedTabID(selectdTabID + 1);
+    if (selectdTabID > 0 && selectdTabID < 6) setSelectedTabID(selectdTabID + 1);
   }
 
 
@@ -57,6 +105,7 @@ export default function App() {
 
   function handleConfirmation() {
     setConfirmationMade(true);
+    
   }
 
   function specialGoBack() {
@@ -64,7 +113,14 @@ export default function App() {
     setSelectedTabID(1);
   }
 
+  function specialGoAdmin() {
+    setConfirmationMade(true);
 
+      setSelectedTabID(5); 
+      console.log(selectdTabID)// Set the tab ID to 5 to go to the admin login page
+      setShowAdmin(true); // Show the admin login page
+    
+  }
 
   return (
     <div className="container">
@@ -82,8 +138,13 @@ export default function App() {
           GoFirst={specialGoBack}
           GoNextTab={handleSelectedTabID}
           onConfirm={handleConfirmation}
-          confirmationMade={confirmationMade} // Pass confirmation status as a prop
+          confirmationMade={confirmationMade} 
           Allusers = {Allusers}
+          specialGoAdmin={specialGoAdmin}
+          showAdmin={showAdmin}
+          adminLoggedIn={adminLoggedIn}
+          GoToAdminPage={GoToAdminPage}
+          handleAdminLogin={handleAdminLogin}
         />
 
       </div>

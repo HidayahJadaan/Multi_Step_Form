@@ -1,14 +1,40 @@
 import { useState } from "react";
-import Allusers from "../App"
 import PageTitle from "../components/PageTitle"
 import PersonalInfo from "./PersonalInfo.js"
 import SelectYourPlan from "../components/SelectPlan"
 import PickAddsOn from "../components/PickAdds"
 import FinishingUp from "../components/FinishingUp"
 import ThankFullComponent from "../components/Thank"
+import Admin from "../components/Admin"
+import AdminLoginPage from "../components/AdminLogin"
 
-export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFirst, onConfirm, confirmationMade, Allusers }) {
+export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFirst, onConfirm, confirmationMade, Allusers,specialGoAdmin,showAdmin,adminLoggedIn,
+  GoToAdminPage,handleAdminLogin }) {
+  
+
  
+  function onCancel() {
+    // Reset the form state to its initial values
+    setUserInfo({
+      UserData: {
+        Name: "",
+        Email: "",
+        PhoneNumber: "",
+      },
+      UserPlan: {
+        Planname: "",
+        icon: "",
+        Planamount: "",
+        Plantype: "",
+        PlanID: "",
+      },
+      UserAddsInfo: [],
+    });
+
+    GoFirst();
+  }
+
+  
 
     const [userInfo, setUserInfo] = useState({
       UserData: {
@@ -26,6 +52,10 @@ export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFi
       UserAddsInfo: [],
     });
   
+   
+
+
+
     // Define functions to update the userInfo object
     const updateName = (name) => {
       setUserInfo({ ...userInfo, UserData: { ...userInfo.UserData, Name: name } });
@@ -53,31 +83,75 @@ export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFi
         },
       });
     };
-  if (confirmationMade) {
-    Allusers.push(userInfo)
-    console.log(userInfo)
-    console.log(Allusers)
+    
+
   
-      return (
-        <ThankFullComponent />
-        
-      );
+
+
+    if (confirmationMade) {
+      if (
+        userInfo.UserData.Name &&
+        userInfo.UserData.Email &&
+        userInfo.UserData.PhoneNumber &&
+        userInfo.UserPlan.Planname
+      ) {
+        // Check if the user doesn't already exist in the Allusers array
+        const userExists = Allusers.some((user) => user.UserData.Email === userInfo.UserData.Email);
+  
+        if (!userExists) {
+          Allusers.push(userInfo);
+          setUserInfo({
+            UserData: {
+              Name: "",
+              Email: "",
+              PhoneNumber: "",
+            },
+            UserPlan: {
+              Planname: "",
+              icon: "",
+              Planamount: "",
+              Plantype: "",
+              PlanID: "",
+            },
+            UserAddsInfo: [],
+          });
+          console.log("User Confirmation Successfully", Allusers);
+        }
+      }
+
+    // selectdTabID = selectdTabID+1;
+  
+    return (
+      
+      showAdmin && !adminLoggedIn ? (
+        <AdminLoginPage Tabs={Tabs} selectdTabID={selectdTabID}  GoBack={onCancel} onAdminLogin={handleAdminLogin} />
+      ) : adminLoggedIn ? (
+        <Admin Tabs={Tabs} selectdTabID={selectdTabID} Allusers={Allusers} />
+      ) : (
+        <ThankFullComponent GoNextTab={GoNextTab} GoBack={onCancel} selectdTabID={selectdTabID} GoToAdminPage={GoToAdminPage} />
+      )
+    );
     } 
   
     else 
    {
     return (
       <div className="content-box">
+
+
         <PageTitle Tabs={Tabs} selectdTabID={selectdTabID} />
   
+
+
         {selectdTabID === 1 && (
           <PersonalInfo
-            selectdTabID={selectdTabID}
             GoNextTab={GoNextTab}
             userInfo={userInfo}
             onSetName={(e) => updateName(e.target.value)}
             onSetEmail={(e) => updateEmail(e.target.value)}
             onSetPhone={(e) => updatePhoneNumber(+e.target.value)}
+            specialGoAdmin={specialGoAdmin}
+           
           />
         )}
   
@@ -115,17 +189,29 @@ export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFi
        }
         
         <div className="buttons">
+
+{selectdTabID !==1 && selectdTabID !==5 && 
           <button className="btn" onClick={GoBack}>
             Go Back
-          </button>
+          </button> }
+
+
+        {
+          selectdTabID !==5 &&
+
+          
           <button
-            className="btn next-btn"
-            onClick={
-              selectdTabID === 4 ? onConfirm : GoNextTab
-            }
-          >
-            {selectdTabID === 4 ? "Confirm" : "Next Step"}
-          </button>
+          className="btn next-btn"
+          onClick={
+            selectdTabID === 4 ? onConfirm : GoNextTab
+          }
+        >
+          {selectdTabID === 4 ? "Confirm" : "Next Step"}
+
+         
+        </button>
+
+        }
         </div>
   
       </div>
