@@ -8,7 +8,7 @@ const [currPlan, setCurrPlan] = useState("");
 
 
 function handleSelection() {
-  setCurrPlan(billItem.name);
+  setCurrPlan(billItem.Planname);
 
   
   // Update the state using the provided functions

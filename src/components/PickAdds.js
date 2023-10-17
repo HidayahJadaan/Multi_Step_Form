@@ -3,34 +3,9 @@ import AddsItem from "../components/AddsItem"
 export default function PickAddsOn({
 
   userInfo,
-  onSetAddsID,
-  onSetAddsTitle,
-  onSetAddsDescription,
-  onSetAddsAmount,
+  PickAdds,
 }) {
-  const PickAdds = [
-    {
-      AddsId: 0,
-      AddsTitle: "Online Service",
-      AddsDescription: "Access to multiplayer games",
-      AddsAmount: 1,
-      AddsType: "mo",
-    },
-    {
-      AddsId: 1,
-      AddsTitle: "Large Storage",
-      AddsDescription: "Extra 1TB on cloud save",
-      AddsAmount: 2,
-      AddsType: "mo",
-    },
-    {
-      AddsId: 2,
-      AddsTitle: "Customizable profile",
-      AddsDescription: "Custom theme on your profile",
-      AddsAmount: 1,
-      AddsType: "mo",
-    },
-   ];
+  
 
    const handleSelection = (item) => {
     const existingAddOnIndex = userInfo.UserAddsInfo.findIndex(
@@ -45,14 +20,18 @@ export default function PickAddsOn({
       userInfo.UserAddsInfo.splice(existingAddOnIndex, 1);
     }
 
-    // Call the provided functions to update the corresponding state
-    onSetAddsID(item.AddsId);
-    onSetAddsTitle(item.AddsTitle);
-    onSetAddsDescription(item.AddsDescription);
-    onSetAddsAmount(item.AddsAmount);
+    
   };
   
 
+ 
+  
+  // console.log(billings);
+  // updateAdds();
+
+
+
+ 
 
   return (
     <div className="PickAddsOn">
@@ -63,7 +42,6 @@ export default function PickAddsOn({
           userInfo={userInfo}
           handleSelection={handleSelection}
         />
-        
       ))}
 
      

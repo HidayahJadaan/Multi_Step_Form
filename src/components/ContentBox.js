@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageTitle from "../components/PageTitle"
 import PersonalInfo from "./PersonalInfo.js"
 import SelectYourPlan from "../components/SelectPlan"
@@ -8,6 +8,11 @@ import ThankFullComponent from "../components/Thank"
 import Admin from "../components/Admin"
 import AdminLoginPage from "../components/AdminLogin"
 import "./ContentBox.css"
+import arcade from "../assets/images/icon-arcade.svg";
+import advanced from "../assets/images/icon-advanced.svg";
+import pro from "../assets/images/icon-pro.svg";
+
+
 
 export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFirst, onConfirm, confirmationMade, Allusers,specialGoAdmin,showAdmin,adminLoggedIn,
   GoToAdminPage,handleAdminLogin }) {
@@ -16,7 +21,85 @@ export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFi
       localStorage.setItem('allusers', JSON.stringify(Allusers));
     }
     
- 
+
+
+  const [billings, setBillings] = useState([
+    {
+      Planname: "Arcade",
+      icon: arcade,
+      Planamount: 9,
+      Plantype: "mo",
+    },
+    {
+      Planname: "Advanced",
+      icon: advanced,
+      Planamount: 12,
+      Plantype: "mo",
+    },
+    {
+      Planname: "Pro",
+      icon: pro,
+      Planamount: 15,
+      Plantype: "mo",
+    },
+  ]);
+
+
+    // setBillings();
+    // updateAdds();
+
+  
+
+  const [PickAdds, setAdds] = useState(
+    [
+      {
+        AddsId: 0,
+        AddsTitle: "Online Service",
+        AddsDescription: "Access to multiplayer games",
+        AddsAmount: 1,
+        AddsType: "mo",
+      },
+      {
+        AddsId: 1,
+        AddsTitle: "Large Storage",
+        AddsDescription: "Extra 1TB on cloud save",
+        AddsAmount: 2,
+        AddsType: "mo",
+      },
+      {
+        AddsId: 2,
+        AddsTitle: "Customizable profile",
+        AddsDescription: "Custom theme on your profile",
+        AddsAmount: 1,
+        AddsType: "mo",
+      },
+     ]
+  );
+
+
+  useEffect(() => {
+    // Define a function to update PickAdds
+    const updatePickAdds = () => {
+      const type = billings.some((item) => item.Plantype === "mo");
+
+      if (!type) {
+        const updatedAdds = PickAdds.map((item) => ({
+          ...item,
+          AddsType: "yr",
+          AddsAmount: item.AddsAmount * 10,
+        }));
+
+        setAdds(updatedAdds);
+      }
+    };
+
+    // Call the updatePickAdds function whenever billings changes
+    updatePickAdds();
+  }, [billings]);
+
+
+  
+
   function onCancel() {
     // Reset the form state to its initial values
     setUserInfo({
@@ -168,6 +251,8 @@ console.log("Saving To Local Storage Successed")
          userInfo={userInfo}
          updatePlanInfo={updatePlanInfo}
          setUserInfo={setUserInfo}
+         billings={billings}
+          setBillings = {setBillings}
        />
         )}
   
@@ -176,13 +261,16 @@ console.log("Saving To Local Storage Successed")
           GoBack={GoBack}
           GoNextTab={GoNextTab}
           userInfo={userInfo}
-          onSetAddsID={() => {}}
-          onSetAddsTitle={() => {}}
-          onSetAddsDescription={() => {}}
-          onSetAddsAmount={() => {}}
+          billings={billings}
+          setUserInfo={setUserInfo}
+          PickAdds={PickAdds}
   
           />
-        )}
+
+        
+        )
+        
+        }
   
        {
         selectdTabID === 4 && (
@@ -190,6 +278,7 @@ console.log("Saving To Local Storage Successed")
           GoBack={GoFirst}
           userInfo={userInfo}
           selectdTabID={selectdTabID}
+          setUserInfo={setUserInfo}
         />
   
         )
