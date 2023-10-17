@@ -69,7 +69,7 @@ export default function App() {
     // Define the admin's credentials
     const adminEmail = "admin@admin.com";
     const adminName = "admin";
-    const adminPassword = "admin";
+    const adminPassword = "123456789admin";
   
     // Check if the entered credentials match the admin's credentials
     if (email === adminEmail && name === adminName && password === adminPassword) {

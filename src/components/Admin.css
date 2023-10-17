@@ -1,19 +1,35 @@
-.user-cards{
+/* .user-cards{
     width: 500px;
     height: 300px;
-  }
+    background-color: hsl(213, 96%, 18%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px;
+    text-align: left;
+  } */
 
-  @media only screen and (max-width: 1024px) {
-  
-  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
   }
   
-  
-  @media only screen and (max-width: 768px) {
-    
-    
+  .user-table th, .user-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
   }
-  @media only screen and (max-width: 480px) {
-    
-    
+  
+  .user-table thead {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .user-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .user-table tbody tr:hover {
+    background-color: #e0e0e0;
   }
