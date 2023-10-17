@@ -5,7 +5,7 @@
 
 # Admin Page
 
-To LogIn As Admin :
-Name : admin
-Email : admin@admin.com
-Password: 123456789admin
+# To LogIn As Admin :<br /> <hr />
+Name : admin <br />
+Email : admin@admin.com <br />
+Password: 123456789admin <br />
