@@ -1,7 +1,8 @@
 import AddsItem from "../components/AddsItem"
 
 export default function PickAddsOn({
-
+  GoBack,
+  GoNextTab,
   userInfo,
   PickAdds,
 }) {
@@ -44,7 +45,11 @@ export default function PickAddsOn({
         />
       ))}
 
-     
+<div className="buttons">
+  <button className="btn" onClick={GoBack}>Go Back</button>
+
+<button className="btn next-btn" onClick={GoNextTab}>Next Step</button>
+</div>
     </div>
   );
 }

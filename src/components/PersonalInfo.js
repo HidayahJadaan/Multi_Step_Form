@@ -42,8 +42,9 @@ export default function PersonalInfo({
       />
 
 <div className="buttons">
-  <button className="btn" onClick={specialGoAdmin}>Go To Admin Page</button>
+  <button className="btn" onClick={specialGoAdmin}>Admin Page</button>
 
+<button className="btn next-btn" type="submit">Next Step</button>
 </div>
     </form>
 

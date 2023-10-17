@@ -30,7 +30,7 @@ return (
 
       <span>{billItem.Plantype}</span>
     </label>
-    <p>2 months free</p>
+    <p className="bill-Discount">2 months free</p>
   </label>
 );
 }

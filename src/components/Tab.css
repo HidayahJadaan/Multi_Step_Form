@@ -39,7 +39,7 @@
   }
 
 
-
+/* 
   @media only screen and (max-width: 750px) {
 
     .tab{
@@ -66,7 +66,7 @@
   
   
       }
-      
+       
 
       @media only screen and (max-width: 636px) {
         .tab{
@@ -90,4 +90,24 @@
             }
         
               }
-              
+       */
+       
+       
+
+       @media only screen and (max-width: 1024px) and (min-width:770px){
+        .tab{
+       
+        margin: 30px;
+      }
+  
+       }
+       
+       
+       @media only screen and (max-width: 768px) {
+         
+         
+       }
+       @media only screen and (max-width: 480px) {
+         
+         
+       }

@@ -1,3 +1,5 @@
+
+
 .personalInfo{
     display: flex;
     flex-direction: column;
@@ -5,7 +7,7 @@
     font-size: 20px;
     
   }
-  
+ 
   .personalInfo input, 
   .personalInfo input :checked{
     height: 50px;
@@ -20,7 +22,7 @@
   }
   
 
-  @media only screen and (max-width: 750px) {
+  /* @media only screen and (max-width: 750px) {
     .personalInfo{
     
       font-size: 15px;
@@ -44,4 +46,21 @@ width: 220px;
       
               }
 
+            } */
+
+
+            @media only screen and (max-width: 1024px) and (min-width: 770px) {
+  .personalInfo{
+  }
+  
+            }
+            
+            
+            @media only screen and (max-width: 768px) {
+              
+              
+            }
+            @media only screen and (max-width: 480px) {
+              
+              
             }

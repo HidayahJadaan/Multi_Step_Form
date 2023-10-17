@@ -1,10 +1,10 @@
 .content-box{
-    width: 60%;
-    /* border: 1px solid blue; */
-    margin: 0 auto;
-    padding: 20px;
-    position: relative;
-  }
+  width: 60%;
+  /* border: 1px solid blue; */
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
 
   .buttons{
 
@@ -22,11 +22,15 @@
     cursor: pointer;
     
   }
-  
+  .next-btn:hover{
+
+    background-color: hsl(213, 96%, 27%);
+    border: 1px solid hsl(213, 96%, 27%);
+  }
   .next-btn{
     background-color: hsl(213, 96%, 18%);
-    position: absolute;
-    right: 10px;
+   position: absolute;
+   right: 80px;
     color: #fff;
     border: 1px solid hsl(213, 96%, 18%);
     border-radius: 8px;
@@ -61,7 +65,7 @@
 
 
 
-@media only screen and (max-width: 690px) {
+/* @media only screen and (max-width: 690px) {
   .content-box{
     padding: 10px;
 
@@ -81,7 +85,6 @@
   .btn{
     width: 120px;
     height: 30px;
-  /* border-radius: 50%;   */
   font-size: 15px;
   position: absolute;
   bottom: -3%;
@@ -107,4 +110,37 @@ border-radius: 12px;
     margin: -35px 0;
    }
          }
+          */
+
+
+
+
+
+
          
+          @media only screen and (max-width: 1024px) and (min-width: 770px) {
+        
+            .btn{
+              width: 100px;
+              height: 40px;
+            
+              
+            }
+            
+            .next-btn{
+           
+              right: 20px;
+            
+            }
+           
+         
+          }
+          
+          @media only screen and (max-width: 768px) {
+            
+            
+          }
+          @media only screen and (max-width: 480px) {
+            
+            
+          }

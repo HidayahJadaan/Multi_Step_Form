@@ -11,3 +11,23 @@
   .Thanks p{
     color: hsl(231, 11%, 63%);
   }
+
+
+
+  @media only screen and (max-width: 1024px) and (min-width:770px) {
+  
+    .Thanks{
+     
+    padding: 20px 20px 60px 20px;
+    }
+  }
+  
+  
+  @media only screen and (max-width: 768px) {
+    
+    
+  }
+  @media only screen and (max-width: 480px) {
+    
+    
+  }

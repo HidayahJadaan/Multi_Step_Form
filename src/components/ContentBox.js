@@ -275,40 +275,18 @@ console.log("Saving To Local Storage Successed")
        {
         selectdTabID === 4 && (
           <FinishingUp
-          GoBack={GoFirst}
+          GoBack={GoBack}
           userInfo={userInfo}
           selectdTabID={selectdTabID}
           setUserInfo={setUserInfo}
+          onConfirm={onConfirm}
+          GoNextTab={GoNextTab}
         />
   
         )
        }
         
-        <div className="buttons">
-
-{selectdTabID !==1 && selectdTabID !==5 && 
-          <button className="btn" onClick={GoBack}>
-            Go Back
-          </button> }
-
-
-        {
-          selectdTabID !==5 &&
-
-          
-          <button
-          className="btn next-btn"
-          onClick={
-            selectdTabID === 4 ? onConfirm : GoNextTab
-          }
-        >
-          {selectdTabID === 4 ? "Confirm" : "Next Step"}
-
-         
-        </button>
-
-        }
-        </div>
+     
   
       </div>
     );

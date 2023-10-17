@@ -18,7 +18,6 @@ body{
   margin: 150px auto;
 }
 .app{
-  font-family: 'Ubuntu';
   width:  100%;
   display: flex;
   gap: 5px;
@@ -30,12 +29,37 @@ body{
   padding: 0 20px;
   max-height: 670px;
   height: 650px;
+  
 }
 
-@media only screen and (max-width: 750px) {
-  /* body {
-    background-color:  hsl(208, 60%, 95%);
-  } */
+
+/* 320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens */
+
+
+
+@media only screen and (max-width: 1024px) and (min-width: 770px) {
+
+              .app{
+                height: 670px;
+              }
+}
+  
+
+
+@media only screen and (max-width: 768px) {
+  
+  
+}
+@media only screen and (max-width: 480px) {
+  
+  
+}
+
+/* @media only screen and (max-width: 750px) {
+  
   .app{
     max-height: 600px;
     height: 560px;
@@ -69,4 +93,4 @@ body{
         }
      
            }
-           
+            */

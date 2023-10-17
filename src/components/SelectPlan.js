@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import "./SelectPlan.css";
 
-export default function SelectYourPlan({ userInfo, updatePlanInfo, setUserInfo, billings, setBillings }) {
+export default function SelectYourPlan({ userInfo, updatePlanInfo, setUserInfo, billings, setBillings,GoNextTab, GoBack }) {
   const [planType, setPlanType] = useState("mo");
   const [selectedPlan, setSelectedPlan] = useState(null);
 
@@ -90,6 +90,13 @@ export default function SelectYourPlan({ userInfo, updatePlanInfo, setUserInfo, 
 
         <span>Yearly</span>
       </div>
+
+
+      <div className="buttons">
+  <button className="btn" onClick={GoBack}>Go Back</button>
+
+<button className="btn next-btn" onClick={GoNextTab}>Next Step</button>
+</div>
     </div>
   );
 }

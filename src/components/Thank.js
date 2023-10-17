@@ -22,7 +22,7 @@ export default function ThankFullComponent({  GoBack, selectdTabID, specialGoAdm
           Cancel
         </button>
         <button className="btn Admin-btn" onClick={specialGoAdmin}>
-          {selectdTabID === 5 ? 'Go To Admin Page' : 'Next Step'}
+          {selectdTabID === 5 ? 'Admin Page' : 'Next Step'}
         </button>
       </div>
 
