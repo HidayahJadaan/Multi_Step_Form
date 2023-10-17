@@ -1,7 +1,6 @@
 
 .Billings{
     display: flex;
-   
     gap: 20px;
    
   
@@ -98,12 +97,12 @@
   @media only screen and (max-width: 1024px) and (min-width: 770px) {
 
               .Billings{
-                gap: 12px;
+                gap: 10px;
               }
 
 
               .toggle-bill {
-                width: 80%;
+                width: 90%;
            margin: 50px auto 70px auto;
               }
   }

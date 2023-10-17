@@ -40,6 +40,16 @@
       padding: 20px 0px;
      
     }
+
+    .userInfo{
+      font-size: 10px;
+      font-weight: bolder;
+    
+    }
+
+    .selected h2{
+      font-size: 18px;
+    }
   
   }
   

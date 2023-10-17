@@ -1,5 +1,5 @@
 .Item{
-    width: 40%;
+    width: 30%;
     text-align: left;
     border: 1px solid hsl(231, 11%, 63%);
     padding: 20px;
@@ -52,7 +52,7 @@
   @media only screen and (max-width: 1024px) and (min-width: 770px) {
 
     .Item  {
-      width: 90%;
+      width: 34%;
       font-size: 12px;
       padding: 14px;
 

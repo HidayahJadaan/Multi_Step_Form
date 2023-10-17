@@ -1,9 +1,11 @@
 .content-box{
-  width: 60%;
+  width: 50%;
   /* border: 1px solid blue; */
   margin: 0 auto;
   padding: 20px;
-  position: relative;
+  position: absolute;
+right: 17%;  
+
 }
 
   .buttons{
@@ -29,8 +31,7 @@
   }
   .next-btn{
     background-color: hsl(213, 96%, 18%);
-   position: absolute;
-   right: 80px;
+   
     color: #fff;
     border: 1px solid hsl(213, 96%, 18%);
     border-radius: 8px;
@@ -43,83 +44,15 @@
     color: #fff;
   }
 
-/* 
-  @media only screen and (mmax-width: 758px) {
-    .content-box{
-      width: 45%;
-      position: absolute;
-      right: 0;
-    
-    }
-
-
-    .btn{
-      width: 100px;
-      height: 40px;
-      
-      font-size: 17px;
-      
-    }
-      }
-       */
-
-
-
-/* @media only screen and (max-width: 690px) {
-  .content-box{
-    padding: 10px;
-
-    position: relative;
-  }
-.next-btn, .btn{
-  position: absolute;
-  bottom: -10%;
-}
-
-  }
-
-
-
-  @media only screen and (max-width: 636px) {
-   
-  .btn{
-    width: 120px;
-    height: 30px;
-  font-size: 15px;
-  position: absolute;
-  bottom: -3%;
-  margin: 0 -20px;
-  }
- 
-       }
-       
-
-
-  @media only screen and (max-width: 600px) {
-   
-   .content-box{
-    position: absolute;
-    top: 20%;
-    background-color: #fff;
-padding: 20px;
-border-radius: 12px;
-   }
-
-   .btn{
-    width: 123px;
-    margin: -35px 0;
-   }
-         }
-          */
-
-
-
-
-
 
          
           @media only screen and (max-width: 1024px) and (min-width: 770px) {
-        
+            .content-box{
+              width: 32%;
+              padding: 0;
+              right: 15%;  
+            }
+
             .btn{
               width: 100px;
               height: 40px;
