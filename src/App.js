@@ -81,6 +81,7 @@ export default function App() {
       console.log(email)
       console.log(password)
       console.log("Success Login")
+
     } else {
       // Display an error message if the credentials don't match
       alert("Only admins can log in to this page.");
@@ -106,6 +107,7 @@ export default function App() {
     setConfirmationMade(true);
     setSelectedTabID(5); 
 
+
     
   }
 
@@ -120,6 +122,9 @@ export default function App() {
       setSelectedTabID(5); 
       console.log(selectdTabID)// Set the tab ID to 5 to go to the admin login page
       setShowAdmin(true); // Show the admin login page
+      // setConfirmationMade(false);
+      // setShowAdmin(false); // Show the admin login page
+
     
   }
 

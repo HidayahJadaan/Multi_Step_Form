@@ -215,7 +215,7 @@ console.log("Saving To Local Storage Successed")
       showAdmin && !adminLoggedIn ? (
         <AdminLoginPage Tabs={Tabs} selectdTabID={selectdTabID}  GoBack={onCancel} onAdminLogin={handleAdminLogin} />
       ) : adminLoggedIn ? (
-        <Admin Tabs={Tabs} selectdTabID={selectdTabID} Allusers={Allusers} onCancel={onCancel} />
+        <Admin Tabs={Tabs} selectdTabID={selectdTabID} Allusers={Allusers} GoBack={onCancel} />
       ) : (
         <ThankFullComponent GoNextTab={GoNextTab} GoBack={onCancel} selectdTabID={selectdTabID}  specialGoAdmin={specialGoAdmin} />
       )

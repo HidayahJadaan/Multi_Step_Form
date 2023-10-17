@@ -2,7 +2,7 @@ import React from 'react';
 import PageTitle from './PageTitle';
 import './Admin.css';
 
-export default function Admin({ Tabs, selectdTabID, onCancel }) {
+export default function Admin({ Tabs, selectdTabID, GoBack }) {
   const storedAllusers = JSON.parse(localStorage.getItem('allusers')) || [];
 function DeleteLocalStorage(){
 
@@ -42,7 +42,7 @@ function DeleteLocalStorage(){
 
       <div className='buttons'>
         <button className='btn' onClick={DeleteLocalStorage}>Delete Users</button>
-        <button className='btn next-btn' onClick={onCancel}>Log Out</button>
+        <button className='btn next-btn' onClick={GoBack}>Log Out</button>
       </div>
     </div>
   );
