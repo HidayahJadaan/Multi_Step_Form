@@ -24,6 +24,8 @@ return (
 
 
     <img src={billItem.icon} alt={billItem.Planname} className="billIcon" />
+    <div className="billItem-content">
+
     <h3>{billItem.Planname}</h3>
     <label className="bill-desc">
       <span>${billItem.Planamount}/</span>
@@ -31,6 +33,7 @@ return (
       <span>{billItem.Plantype}</span>
     </label>
     <p className="bill-Discount">2 months free</p>
+    </div>
   </label>
 );
 }

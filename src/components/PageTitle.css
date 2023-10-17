@@ -17,20 +17,26 @@
   
 
 
-    @media only screen and (max-width: 1024px) and (min-width:770px){
-  
+    @media only screen and (max-width: 1024px) and (min-width: 730px){
+    
       .page-title{
      
-        font-size: 28px;
+        font-size: 25px;
       }
     }
     
     
-    @media only screen and (max-width: 768px) {
+    /* @media only screen and (max-width: 769px) and (min-width:481px) {
+
+
+      .page-title{
+     
+        font-size: 28px;
+      }
       
       
     }
     @media only screen and (max-width: 480px) {
       
       
-    }
+    } */

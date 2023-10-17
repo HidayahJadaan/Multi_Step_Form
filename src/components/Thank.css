@@ -14,7 +14,7 @@
 
 
 
-  @media only screen and (max-width: 1024px) and (min-width:770px) {
+  @media only screen and (max-width: 1024px) and (min-width: 730px) {
   
     .Thanks{
      
@@ -22,12 +22,16 @@
     }
   }
   
-  
-  @media only screen and (max-width: 768px) {
+/*   
+  @media only screen and (max-width: 769px) and (min-width:481px) {
     
+    .Thanks{
+     
+      padding: 20px 20px 60px 20px;
+      }
     
   }
   @media only screen and (max-width: 480px) {
     
     
-  }
+  } */

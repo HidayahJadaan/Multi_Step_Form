@@ -39,7 +39,7 @@ body{
 
 
 
-@media only screen and (max-width: 1024px) and (min-width: 770px) {
+@media only screen and (max-width: 1024px) and (min-width: 730px) {
 
               .app{
                 height: 670px;
@@ -47,49 +47,14 @@ body{
 }
   
 
+@media only screen and (max-width: 729px) and (min-width: 320px) {
 
-@media only screen and (max-width: 768px) {
-  
-  
-}
-@media only screen and (max-width: 480px) {
-  
-  
-}
-
-/* @media only screen and (max-width: 750px) {
-  
   .app{
-    max-height: 600px;
-    height: 560px;
+
+    background-color:  hsl(206, 94%, 95%);
+    position: relative;
+  flex-direction: column;
+  max-height: 900px;
+  height: 800px;
   }
-  
 }
-
-@media only screen and (max-width: 690px) {
-  app{
-    max-height: 400px;
-    height: 400px;
-  }
-  
-
-  }
-
-  @media only screen and (max-width: 636px) {
-   .app{
-    height: 420px;
-   }
-
-      }
-      
-
-      @media only screen and (max-width: 600px) {
-        .app{
-         flex-direction: column;
-         padding: 0;
-         height: 520px;
-         background-color:  hsl(207, 53%, 93%);
-        }
-     
-           }
-            */

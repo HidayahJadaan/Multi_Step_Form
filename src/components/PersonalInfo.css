@@ -48,10 +48,8 @@ width: 220px;
             } */
 
 
-            @media only screen and (max-width: 1024px) and (min-width: 770px) {
-  .personalInfo{
-  }
-  
+            @media only screen and (max-width: 1024px) and (min-width: 730px) {
+ 
             }
             
             
