@@ -2,7 +2,7 @@ import React from 'react';
 import PageTitle from './PageTitle';
 import './Admin.css';
 
-export default function Admin({ Tabs, selectdTabID, GoBack }) {
+export default function Admin({ Tabs, selectdTabID, GoBack}) {
   const storedAllusers = JSON.parse(localStorage.getItem('allusers')) || [];
 function DeleteLocalStorage(){
 

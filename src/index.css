@@ -5,11 +5,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Ubuntu';
+
 }
 
 body{
 
-  font-family: 'Ubuntu';
   color: hsl(213, 96%, 18%);
 }
 .container{

@@ -151,6 +151,8 @@ export default function App() {
           adminLoggedIn={adminLoggedIn}
           GoToAdminPage={GoToAdminPage}
           handleAdminLogin={handleAdminLogin}
+          setAdminLoggedIn={setAdminLoggedIn}
+          setConfirmationMade={setConfirmationMade}
         />
 
       </div>

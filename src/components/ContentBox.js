@@ -15,7 +15,7 @@ import pro from "../assets/images/icon-pro.svg";
 
 
 export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFirst, onConfirm, confirmationMade, Allusers,specialGoAdmin,showAdmin,adminLoggedIn,
-  GoToAdminPage,handleAdminLogin }) {
+  GoToAdminPage,handleAdminLogin, setAdminLoggedIn ,setConfirmationMade}) {
   
     function saveAllUsersToLocalStorage(Allusers) {
       localStorage.setItem('allusers', JSON.stringify(Allusers));
@@ -118,6 +118,7 @@ export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFi
       UserAddsInfo: [],
     });
 
+    setConfirmationMade(false);
     GoFirst();
   }
 
@@ -186,9 +187,9 @@ export default function ContentBox({ Tabs, selectdTabID, GoBack, GoNextTab, GoFi
         const userExists = Allusers.some((user) => user.UserData.Email === userInfo.UserData.Email);
   
         if (!userExists) {
-          Allusers.push(userInfo);
-          saveAllUsersToLocalStorage(Allusers);
-console.log("Saving To Local Storage Successed")
+       
+          
+
           setUserInfo({
             UserData: {
               Name: "",
@@ -204,6 +205,12 @@ console.log("Saving To Local Storage Successed")
             },
             UserAddsInfo: [],
           });
+
+          Allusers.push(userInfo);
+          saveAllUsersToLocalStorage(Allusers);
+          console.log("Saving To Local Storage Successed")
+setAdminLoggedIn(false);
+
           console.log("User Confirmation Successfully", Allusers);
         }
       }
@@ -281,6 +288,7 @@ console.log("Saving To Local Storage Successed")
           setUserInfo={setUserInfo}
           onConfirm={onConfirm}
           GoNextTab={GoNextTab}
+        
         />
   
         )
