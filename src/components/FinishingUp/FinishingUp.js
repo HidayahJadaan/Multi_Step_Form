@@ -1,5 +1,5 @@
-import FinishItem from "../components/FinishItem"
-import TotalItem from "../components/TotalItem"
+import FinishItem from "../FinishItem/FinishItem"
+import TotalItem from "../TotalItem/TotalItem"
 import "./FinishingUp.css"
 
 

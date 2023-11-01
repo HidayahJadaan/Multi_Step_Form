@@ -3,7 +3,7 @@
   top: 17%;
     max-height: 600px;
     height: 80%;
-    background-image: url('../assets/images/bg-sidebar-desktop.svg');
+    background-image: url('../../assets/images/bg-sidebar-desktop.svg');
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -16,7 +16,7 @@
                 position: absolute;
                 width: 100%;
                 top: 0;
-                  background-image: url('../assets/images/bg-sidebar-mobile.svg');
+                  background-image: url('../../assets/images/bg-sidebar-mobile.svg');
                   background-repeat: no-repeat;
                   background-size: 700px;
                   border-radius: 10px;

@@ -1,4 +1,4 @@
-import AddsItem from "../components/AddsItem"
+import AddsItem from "../AddsItem/AddsItem"
 
 export default function PickAddsOn({
   GoBack,

@@ -1,5 +1,5 @@
 import React from 'react';
-import PageTitle from './PageTitle';
+import PageTitle from '../PageTitle/PageTitle';
 import './Admin.css';
 
 export default function Admin({ Tabs, selectdTabID, GoBack}) {

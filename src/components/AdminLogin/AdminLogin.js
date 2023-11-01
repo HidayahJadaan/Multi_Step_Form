@@ -1,4 +1,4 @@
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../PageTitle/PageTitle";
 
 export default function AdminLoginPage({
   Tabs,

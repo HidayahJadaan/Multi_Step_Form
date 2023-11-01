@@ -1,4 +1,4 @@
-import Tab from "./Tab.js"
+import Tab from "../Tab/Tab"
 import './SideBar.css'
 
 export default function SideBar({ Tabs, selectdTabID }) {

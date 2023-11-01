@@ -1,5 +1,5 @@
 
-import BillItem from "../components/BillItem";
+import BillItem from "../BillItem/BillItem";
 import React, { useState } from "react";
 
 import "./SelectPlan.css";

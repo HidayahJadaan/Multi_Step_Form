@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SideBar from "./components/SideBar"
-import ContentBox from "./components/ContentBox"
+import SideBar from "./components/SideBar/SideBar"
+import ContentBox from "./components/ContentBox/ContentBox"
 
 //===============================================
 const  Allusers = [];
